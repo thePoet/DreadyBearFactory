@@ -4313,6 +4313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interval: 5
+  numToBeCreated: 10
   bearPrefab: {fileID: 160578, guid: 5124e98303f0142788b926e5a8b880aa, type: 2}
   belt: {fileID: 1271273852}
 --- !u!4 &1697073313

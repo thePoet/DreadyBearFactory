@@ -9,8 +9,8 @@ public class Belt : MonoBehaviour
 	//public Transform endMarker;
 	public Belt nextBelt;
 	public float speed;
-	public static float minAllowedDistance = 1.0f;
-	public static float speedModifier = 2.0f;
+	public static float minAllowedDistance = 1.5f;
+	public static float speedModifier = 1.0f;
 
 	public List<Bear> bears = new List<Bear>();
 

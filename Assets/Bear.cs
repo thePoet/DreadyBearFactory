@@ -12,7 +12,7 @@ public class Bear : MonoBehaviour {
 	int earCount = 0;
 	int mouthCount = 0;
 
-	void Start () 
+	void Awake () 
 	{
 		foreach (GameObject eye in eyes)
 			eye.SetActive(false);
