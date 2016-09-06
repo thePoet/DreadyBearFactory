@@ -9,6 +9,8 @@ public class Belt : MonoBehaviour
 	//public Transform endMarker;
 	public Belt nextBelt;
 	public float speed;
+	public static float minAllowedDistance = 1.0f;
+	public static float speedModifier = 2.0f;
 
 	public List<Bear> bears = new List<Bear>();
 
@@ -30,13 +32,14 @@ public class Belt : MonoBehaviour
 		
 		foreach(Bear bear in bears)
 		{
-			bear.transform.position = Vector3.MoveTowards( bear.transform.position, endMarker.position, speed * Time.deltaTime );
+			bear.transform.position = Vector3.MoveTowards( bear.transform.position, endMarker.position, speed * speedModifier * Time.deltaTime );
 		}
 
 		foreach( Bear bear in bears)
 		{
-			if (Vector3.Distance( bear.transform.position, endMarker.position ) < 0.001f)
+			if (Vector3.Distance( bear.transform.position, endMarker.position ) < 0.001f && nextBelt.IsRoomOnBelt())
 			{
+				
 				bears.Remove( bear );
 				nextBelt.AddToBelt( bear );
 				break; // TODO: shame 
@@ -54,6 +57,12 @@ public class Belt : MonoBehaviour
 
 	public bool IsRoomOnBelt()
 	{
+		foreach( Bear bear in bears)
+		{
+			if (Vector3.Distance( bear.transform.position, startMarker.position ) < minAllowedDistance)
+				return false;
+		}
+
 		return true;
 	}
 

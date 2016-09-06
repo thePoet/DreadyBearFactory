@@ -3,13 +3,14 @@ using System.Collections;
 
 public class Gate : MonoBehaviour {
 
-	public KeyCode key;
+//	public KeyCode key;
 	public Belt feedBelt;
 	public Belt destinationBeltA;
 	public Belt destinationBeltB;
 	public GameObject spriteA;
 	public GameObject spriteB;
-
+	public GameObject buttonDeactive;
+	public BearDetector bearDetector;
 
 	// Use this for initialization
 	void Start () 
@@ -21,16 +22,33 @@ public class Gate : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if (Input.GetKeyDown( key ))
+	/*	if (Input.GetKeyDown( key ))
 		{
-			if (feedBelt.nextBelt == destinationBeltB)
-				feedBelt.nextBelt = destinationBeltA;
-			else
-				feedBelt.nextBelt = destinationBeltB;
+			Switch();
+		}*/
+		if ( bearDetector.IsDetected() )
+			buttonDeactive.SetActive(true);
+		else
+			buttonDeactive.SetActive(false);
+		
+	}
 
-			spriteA.SetActive(!spriteA.activeSelf);
-			spriteB.SetActive(!spriteB.activeSelf);
-		}
-	
+
+	void Switch()
+	{
+		if (feedBelt.nextBelt == destinationBeltB)
+			feedBelt.nextBelt = destinationBeltA;
+		else
+			feedBelt.nextBelt = destinationBeltB;
+
+		spriteA.SetActive(!spriteA.activeSelf);
+		spriteB.SetActive(!spriteB.activeSelf);
+
+	}
+
+	void OnMouseDown() 
+	{
+		if ( !bearDetector.IsDetected() )
+		    Switch();
 	}
 }

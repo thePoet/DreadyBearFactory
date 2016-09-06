@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\Bear.cs" />
      <Compile Include="Assets\BearCreator.cs" />
+     <Compile Include="Assets\BearDetector.cs" />
      <Compile Include="Assets\Belt.cs" />
      <Compile Include="Assets\EarAdder.cs" />
      <Compile Include="Assets\EyeAdder.cs" />
