@@ -51,6 +51,7 @@
      <Compile Include="Assets\Belt.cs" />
      <Compile Include="Assets\EarAdder.cs" />
      <Compile Include="Assets\EyeAdder.cs" />
+     <Compile Include="Assets\GameManager.cs" />
      <Compile Include="Assets\Gate.cs" />
      <Compile Include="Assets\MouthAdder.cs" />
  <Reference Include="UnityEngine.UI">
