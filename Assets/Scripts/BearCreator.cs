@@ -9,10 +9,22 @@ public class BearCreator : MonoBehaviour {
 	public GameObject bearPrefab;
 	public Belt belt;
 
+	public void StartLevel(int levelNum)
+	{
+		CancelInvoke();
+		numCreated = 0;
+		numToBeCreated = 10;
+		InvokeRepeating( "CreateBear", 0f, interval);
+	}
+
+	public void Stop()
+	{
+		CancelInvoke();
+	}
+
 	// Use this for initialization
 	void Start () 
 	{
-		InvokeRepeating( "CreateBear", 0f, interval);
 	}
 	
 	// Update is called once per frame

@@ -4,6 +4,7 @@ using System.Collections;
 public class Bear : MonoBehaviour {
 
 
+
 	public GameObject[] eyes;
 	public GameObject[] ears;
 	public GameObject[] mouths;
