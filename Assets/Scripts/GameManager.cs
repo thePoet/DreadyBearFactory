@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
@@ -8,7 +9,13 @@ public class GameManager : MonoBehaviour {
 	public GameObject title;
 	public GameObject startGamePrompt;
 	public GameObject[] levelInstructions;
+	public GameObject gameOverScreen;
+	public GameObject victoryScreen;
+	public Text bearCountText;
+
 	public BearCreator bearCreator;
+
+	int bearsFinished = 0;
 
 	int activeLevel;
 
@@ -24,6 +31,9 @@ public class GameManager : MonoBehaviour {
 
 		startGamePrompt.SetActive(true);
 		title.SetActive(true);
+		gameOverScreen.SetActive(false);
+		victoryScreen.SetActive(false);
+		bearCountText.text = "";
 
 	}
 
@@ -48,8 +58,15 @@ public class GameManager : MonoBehaviour {
 			levelInst.SetActive(false);
 
 		bearCreator.StartLevel(1);
+		bearsFinished = 0;
+		bearCountText.text = "Bears: 0 / 10";
 	}
 
+	public void OnBearFinished()
+	{
+		bearsFinished++;
+		bearCountText.text = "Bears: " + bearsFinished + " / 10";
+	}
 
 
 }

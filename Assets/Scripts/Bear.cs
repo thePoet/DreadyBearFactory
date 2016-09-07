@@ -1,20 +1,36 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Bear : MonoBehaviour {
 
-
+	static List<Bear> allBears = new List<Bear>();
 
 	public GameObject[] eyes;
 	public GameObject[] ears;
 	public GameObject[] mouths;
 
-	int eyeCount = 0;
-	int earCount = 0;
-	int mouthCount = 0;
+	public Belt belt  = null;
+
+	public int eyeCount = 0;
+	public int earCount = 0;
+	public int mouthCount = 0;
+
+	static int BearCount()
+	{
+		return allBears.Count;
+	}
+
+	static void DestroyAll()
+	{
+		for (int i=allBears.Count; i>0; i--)
+			Destroy(allBears[i]);
+	}
 
 	void Awake () 
 	{
+		allBears.Add(this);
+
 		foreach (GameObject eye in eyes)
 			eye.SetActive(false);
 		foreach (GameObject ear in ears)
