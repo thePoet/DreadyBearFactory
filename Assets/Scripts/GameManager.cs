@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour {
 	{
 		title.SetActive(false);
 		startGamePrompt.SetActive(false);
+
 		activeLevel = 1;
 		Invoke("TitleForLevel", 1f);
 	}
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour {
 	void TitleForLevel()
 	{
 		levelInstructions[activeLevel].SetActive(true);
+		Invoke ("StartLevel", 2f);
 	}
 
 	void StartLevel()
