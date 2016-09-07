@@ -45,15 +45,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Bear.cs" />
-     <Compile Include="Assets\BearCreator.cs" />
-     <Compile Include="Assets\BearDetector.cs" />
-     <Compile Include="Assets\Belt.cs" />
-     <Compile Include="Assets\EarAdder.cs" />
-     <Compile Include="Assets\EyeAdder.cs" />
-     <Compile Include="Assets\GameManager.cs" />
-     <Compile Include="Assets\Gate.cs" />
-     <Compile Include="Assets\MouthAdder.cs" />
+     <Compile Include="Assets\Scripts\Bear.cs" />
+     <Compile Include="Assets\Scripts\BearCreator.cs" />
+     <Compile Include="Assets\Scripts\BearDetector.cs" />
+     <Compile Include="Assets\Scripts\Belt.cs" />
+     <Compile Include="Assets\Scripts\EarAdder.cs" />
+     <Compile Include="Assets\Scripts\EyeAdder.cs" />
+     <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Gate.cs" />
+     <Compile Include="Assets\Scripts\MouthAdder.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
