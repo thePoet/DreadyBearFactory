@@ -34,10 +34,11 @@ public class BearDestroyer : MonoBehaviour {
 
 	void DestroyBear(Bear bear)
 	{
+		toBeDestroyed=bear;
+
 		if (animator!=null)
 		{
 			animator.SetTrigger("theTrigger");
-			toBeDestroyed=bear;
 			Invoke("ReallyDestroyBear",0.35f);
 		}
 
@@ -45,6 +46,7 @@ public class BearDestroyer : MonoBehaviour {
 		{
 			fire.SetActive(true);
 			Invoke("HideFire", 1f);
+			ReallyDestroyBear();
 		}
 
 	}
