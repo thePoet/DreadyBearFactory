@@ -7,16 +7,22 @@ public class Gate : MonoBehaviour {
 	public Belt feedBelt;
 	public Belt destinationBeltA;
 	public Belt destinationBeltB;
-	public GameObject spriteA;
-	public GameObject spriteB;
+	public GameObject spriteAon;
+	public GameObject spriteAoff;
+	public GameObject spriteBon;
+	public GameObject spriteBoff;
+
 	public GameObject buttonDeactive;
 	public BearDetector bearDetector;
+
+	bool pushable = true;
+	bool toA= true;
 
 	// Use this for initialization
 	void Start () 
 	{
 		feedBelt.nextBelt = destinationBeltA;
-		spriteB.SetActive(false);
+		UpdateSprite();
 	}
 	
 	// Update is called once per frame
@@ -26,29 +32,58 @@ public class Gate : MonoBehaviour {
 		{
 			Switch();
 		}*/
-		if ( bearDetector.IsDetected() )
-			buttonDeactive.SetActive(true);
-		else
-			buttonDeactive.SetActive(false);
-		
+
+		if ( bearDetector.IsDetected() && pushable )
+		{
+			pushable = false;
+			UpdateSprite();
+		}
+
+		if ( !bearDetector.IsDetected() && !pushable )
+		{
+			pushable = true;
+			UpdateSprite();
+		}
+
+
 	}
 
 
 	void Switch()
 	{
-		if (feedBelt.nextBelt == destinationBeltB)
+		toA = !toA;
+
+
+		if (toA)
 			feedBelt.nextBelt = destinationBeltA;
 		else
 			feedBelt.nextBelt = destinationBeltB;
 
-		spriteA.SetActive(!spriteA.activeSelf);
-		spriteB.SetActive(!spriteB.activeSelf);
+		UpdateSprite();
+	}
+
+	void UpdateSprite()
+	{
+		spriteAon.SetActive(false);
+		spriteAoff.SetActive(false);
+		spriteBon.SetActive(false);
+		spriteBoff.SetActive(false);
+
+		if (toA && pushable)
+			spriteAon.SetActive(true);
+		if (toA && !pushable)
+			spriteAoff.SetActive(true);
+		if (!toA && pushable)
+			spriteBon.SetActive(true);
+		if (!toA && !pushable)
+			spriteBoff.SetActive(true);
+			
 
 	}
 
 	void OnMouseDown() 
 	{
-		if ( !bearDetector.IsDetected() )
+		if ( pushable )
 		    Switch();
 	}
 }
