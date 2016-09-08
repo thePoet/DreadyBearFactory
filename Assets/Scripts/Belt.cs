@@ -9,8 +9,8 @@ public class Belt : MonoBehaviour
 	//public Transform endMarker;
 	public Belt nextBelt;
 	public float speed;
-	public static float minAllowedDistance = 1.5f;
-	public static float speedModifier = 3.0f;
+	public static float minAllowedDistance = 2f;
+
 
 	public List<Bear> bears = new List<Bear>();
 
@@ -32,6 +32,7 @@ public class Belt : MonoBehaviour
 		
 		foreach(Bear bear in bears)
 		{
+			float speedModifier = GameManager.instance.speedFactor;
 			bear.transform.position = Vector3.MoveTowards( bear.transform.position, endMarker.position, speed * speedModifier * Time.deltaTime );
 		}
 

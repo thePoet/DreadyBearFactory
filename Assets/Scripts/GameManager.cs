@@ -12,9 +12,19 @@ public class GameManager : MonoBehaviour {
 	public GameObject gameOverScreen;
 	public GameObject victoryScreen;
 	public Text bearCountText;
+	public GameObject livesCounter;
+
+
+	public int numBearsToWin;
+	public float speedFactor = 1.0f;
+	public float percentageOfBearsWithParts = 0.3f;
+	public float secondsBetweenBearsCreated = 3.0f;
+	public int numBearsToBeCreated = 5;
 
 	public BearCreator bearCreator;
 
+
+	bool gameIsOn = false;
 	int bearsFinished = 0;
 
 	int activeLevel;
@@ -34,6 +44,7 @@ public class GameManager : MonoBehaviour {
 		gameOverScreen.SetActive(false);
 		victoryScreen.SetActive(false);
 		bearCountText.text = "";
+		livesCounter.SetActive(false);
 
 	}
 
@@ -54,19 +65,44 @@ public class GameManager : MonoBehaviour {
 
 	void StartLevel()
 	{
+		gameIsOn = true;
+
 		foreach( GameObject levelInst in levelInstructions)
 			levelInst.SetActive(false);
 
+		bearCreator.interval = secondsBetweenBearsCreated;
+		bearCreator.numToBeCreated = numBearsToBeCreated;
 		bearCreator.StartLevel(1);
 		bearsFinished = 0;
-		bearCountText.text = "Bears: 0 / 10";
+		bearCountText.text = "Bears: 0 / " + numBearsToWin;
+		livesCounter.SetActive(true);
 	}
 
 	public void OnBearFinished()
 	{
 		bearsFinished++;
-		bearCountText.text = "Bears: " + bearsFinished + " / 10";
+		bearCountText.text = "Bears: " + bearsFinished + " / " + numBearsToWin;
 	}
 
+	void Update()
+	{
+		if (gameIsOn && bearsFinished >= numBearsToWin)
+		{
+			gameIsOn = false;
+			victoryScreen.SetActive(true);
+		}
+
+		if (gameIsOn && FaultsCounter.instance.GetCount() > 2)
+		{
+			gameIsOn = false;
+			Invoke("GameOver", 1f );
+		}
+	}
+
+	void GameOver()
+	{
+		livesCounter.SetActive(false);
+		gameOverScreen.SetActive(true);
+	}
 
 }

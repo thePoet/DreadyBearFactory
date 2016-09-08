@@ -22,9 +22,7 @@ public class BearDestroyer : MonoBehaviour {
 
 	void DestroyBear(Bear bear)
 	{
-
 		bear.belt.RemoveBear(bear);
-		Destroy(bear.gameObject);
-
+		FaultsCounter.instance.AddFault( bear );
 	}
 }

@@ -38,7 +38,7 @@ public class BearCreator : MonoBehaviour {
 		GameObject newBear = Instantiate( bearPrefab );
 		belt.AddToBelt( newBear.GetComponent<Bear>() );
 
-		if (numCreated > 2)
+		if (Random.value < GameManager.instance.percentageOfBearsWithParts)
 			AddRandomFeaturesToBear(newBear.GetComponent<Bear>());
 	}
 
@@ -46,11 +46,20 @@ public class BearCreator : MonoBehaviour {
 	{
 		float randVal = Random.value;
 
-		if (randVal < 0.3f)
+		if (randVal < 0.25f)
 			bear.AddEye();
-		else if (randVal < 0.6f)
+		else if (randVal < 0.50f)
 			bear.AddEar();
-		//else if (randVal < 0.45f)
-	//		bear.AddMouth();
+		else if (randVal < 0.75f)
+		{
+			bear.AddEye();
+			bear.AddEar();
+		}
+		else
+		{
+			bear.AddEye();
+			bear.AddEar();
+			bear.AddEar();
+		}
 	}
 }

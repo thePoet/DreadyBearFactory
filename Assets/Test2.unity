@@ -3413,6 +3413,12 @@ MonoBehaviour:
   gameOverScreen: {fileID: 188168361}
   victoryScreen: {fileID: 492232023}
   bearCountText: {fileID: 28710053}
+  livesCounter: {fileID: 2074658086}
+  numBearsToWin: 1
+  speedFactor: 2
+  percentageOfBearsWithParts: 0.3
+  secondsBetweenBearsCreated: 3
+  numBearsToBeCreated: 5
   bearCreator: {fileID: 1697073312}
 --- !u!4 &1030172593
 Transform:
@@ -6708,7 +6714,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1897386628}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.04, y: 0.93, z: 0}
+  m_LocalPosition: {x: 1.24, y: 1.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1440549056}
@@ -7263,9 +7269,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bearLocations:
-  - {fileID: 68483524}
-  - {fileID: 1953874187}
-  - {fileID: 1557489380}
+  - {fileID: 68483525}
+  - {fileID: 1953874188}
+  - {fileID: 1557489381}
 --- !u!1 &2081355422
 GameObject:
   m_ObjectHideFlags: 0
