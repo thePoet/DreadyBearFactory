@@ -45,6 +45,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AnimTrigger.cs" />
+     <Compile Include="Assets\ScoreCounter.cs" />
      <Compile Include="Assets\Scripts\Bear.cs" />
      <Compile Include="Assets\Scripts\BearCreator.cs" />
      <Compile Include="Assets\Scripts\BearDestroyer.cs" />

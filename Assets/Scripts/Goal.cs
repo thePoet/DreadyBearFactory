@@ -10,8 +10,8 @@ public class Goal : MonoBehaviour
 			if (bear != null)
 			{
 				bear.belt.RemoveBear(bear);
-				Destroy(bear.gameObject);
-				GameManager.instance.OnBearFinished();
+				ScoreCounter.instance.AddBear(bear);
+	//			GameManager.instance.OnBearFinished();
 			}
 		}
 }

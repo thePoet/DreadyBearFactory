@@ -6,11 +6,16 @@ public class BearDestroyer : MonoBehaviour {
 	public bool destroyMutants;
 	public bool destroyUnfinished;
 	public GameObject fire;
+	public Animator animator;
+
+	Bear toBeDestroyed;
 
 	void Start()
 	{
 		if (fire!=null)
 			HideFire();
+
+
 	}
 
 	void OnTriggerEnter2D(Collider2D other) 
@@ -29,14 +34,29 @@ public class BearDestroyer : MonoBehaviour {
 
 	void DestroyBear(Bear bear)
 	{
+		if (animator!=null)
+		{
+			animator.SetTrigger("theTrigger");
+			toBeDestroyed=bear;
+			Invoke("ReallyDestroyBear",0.35f);
+		}
+
 		if (fire!=null)
 		{
 			fire.SetActive(true);
 			Invoke("HideFire", 1f);
 		}
 
-		bear.belt.RemoveBear(bear);
-		FaultsCounter.instance.AddFault( bear );
+	}
+
+	void ReallyDestroyBear()
+	{
+		if (toBeDestroyed!=null)
+		{
+			toBeDestroyed.belt.RemoveBear(toBeDestroyed);
+			FaultsCounter.instance.AddFault( toBeDestroyed );
+			toBeDestroyed=null;
+		}
 	}
 
 	void HideFire()

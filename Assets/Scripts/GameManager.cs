@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour {
 
 
 	bool gameIsOn = false;
-	int bearsFinished = 0;
+	//int bearsFinished = 0;
 
 	int activeLevel;
 
@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour {
 		victoryScreen.SetActive(false);
 		bearCountText.text = "";
 		livesCounter.SetActive(false);
+		ScoreCounter.instance.Show(false);
 
 	}
 
@@ -73,20 +74,23 @@ public class GameManager : MonoBehaviour {
 		bearCreator.interval = secondsBetweenBearsCreated;
 		bearCreator.numToBeCreated = numBearsToBeCreated;
 		bearCreator.StartLevel(1);
-		bearsFinished = 0;
+		//bearsFinished = 0;
 		bearCountText.text = "0 / " + numBearsToWin;
 		livesCounter.SetActive(true);
-	}
+		ScoreCounter.instance.Empty( numBearsToWin );
+		ScoreCounter.instance.Show(true);
 
+	}
+	/*
 	public void OnBearFinished()
 	{
 		bearsFinished++;
 		bearCountText.text = bearsFinished + " / " + numBearsToWin;
-	}
+	}*/
 
 	void Update()
 	{
-		if (gameIsOn && bearsFinished >= numBearsToWin)
+		if (gameIsOn && ScoreCounter.instance.GetCount() >= numBearsToWin)
 		{
 			gameIsOn = false;
 			victoryScreen.SetActive(true);
