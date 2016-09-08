@@ -45,16 +45,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\BearDestroyer.cs" />
-     <Compile Include="Assets\Goal.cs" />
      <Compile Include="Assets\Scripts\Bear.cs" />
      <Compile Include="Assets\Scripts\BearCreator.cs" />
+     <Compile Include="Assets\Scripts\BearDestroyer.cs" />
      <Compile Include="Assets\Scripts\BearDetector.cs" />
      <Compile Include="Assets\Scripts\Belt.cs" />
      <Compile Include="Assets\Scripts\EarAdder.cs" />
      <Compile Include="Assets\Scripts\EyeAdder.cs" />
+     <Compile Include="Assets\Scripts\FaultsCounter.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Gate.cs" />
+     <Compile Include="Assets\Scripts\Goal.cs" />
      <Compile Include="Assets\Scripts\MouthAdder.cs" />
      <Compile Include="Assets\Scripts\StartButton.cs" />
  <Reference Include="UnityEngine.UI">
