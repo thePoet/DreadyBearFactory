@@ -5,6 +5,13 @@ public class BearDestroyer : MonoBehaviour {
 
 	public bool destroyMutants;
 	public bool destroyUnfinished;
+	public GameObject fire;
+
+	void Start()
+	{
+		if (fire!=null)
+			HideFire();
+	}
 
 	void OnTriggerEnter2D(Collider2D other) 
 	{
@@ -22,7 +29,18 @@ public class BearDestroyer : MonoBehaviour {
 
 	void DestroyBear(Bear bear)
 	{
+		if (fire!=null)
+		{
+			fire.SetActive(true);
+			Invoke("HideFire", 1f);
+		}
+
 		bear.belt.RemoveBear(bear);
 		FaultsCounter.instance.AddFault( bear );
+	}
+
+	void HideFire()
+	{
+		fire.SetActive(false);
 	}
 }

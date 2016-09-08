@@ -74,14 +74,14 @@ public class GameManager : MonoBehaviour {
 		bearCreator.numToBeCreated = numBearsToBeCreated;
 		bearCreator.StartLevel(1);
 		bearsFinished = 0;
-		bearCountText.text = "Bears: 0 / " + numBearsToWin;
+		bearCountText.text = "0 / " + numBearsToWin;
 		livesCounter.SetActive(true);
 	}
 
 	public void OnBearFinished()
 	{
 		bearsFinished++;
-		bearCountText.text = "Bears: " + bearsFinished + " / " + numBearsToWin;
+		bearCountText.text = bearsFinished + " / " + numBearsToWin;
 	}
 
 	void Update()
