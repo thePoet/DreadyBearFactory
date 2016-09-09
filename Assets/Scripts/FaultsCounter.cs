@@ -32,6 +32,11 @@ public class FaultsCounter : MonoBehaviour {
 		return count;
 	}
 
+	public void Reset()
+	{
+		count =0;
+	}
+
 
 
 

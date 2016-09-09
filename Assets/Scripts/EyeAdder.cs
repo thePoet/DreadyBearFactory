@@ -18,6 +18,7 @@ public class EyeAdder : MonoBehaviour {
 		Bear bear = other.gameObject.GetComponent<Bear>();
 		if (bear != null)
 		{
+			GetComponent<AudioSource>().Play();
 			bear.AddEye();
 		}
 

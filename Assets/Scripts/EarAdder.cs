@@ -8,6 +8,7 @@ public class EarAdder : MonoBehaviour {
 		Bear bear = other.gameObject.GetComponent<Bear>();
 		if (bear != null)
 		{
+			GetComponent<AudioSource>().Play();
 			bear.AddEar();
 		}
 

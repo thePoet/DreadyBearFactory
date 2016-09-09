@@ -8,6 +8,7 @@ public class MouthAdder : MonoBehaviour {
 		Bear bear = other.gameObject.GetComponent<Bear>();
 		if (bear != null)
 		{
+			GetComponent<AudioSource>().Play();
 			bear.AddMouth();
 		}
 

@@ -8,6 +8,7 @@ public class BearCreator : MonoBehaviour {
 	int numCreated = 0;
 	public GameObject bearPrefab;
 	public Belt belt;
+	public bool[] recycled = new bool[13];
 
 	public void StartLevel(int levelNum)
 	{
@@ -38,8 +39,11 @@ public class BearCreator : MonoBehaviour {
 		GameObject newBear = Instantiate( bearPrefab );
 		belt.AddToBelt( newBear.GetComponent<Bear>() );
 
-		if (Random.value < GameManager.instance.percentageOfBearsWithParts)
+		//if (Random.value < GameManager.instance.percentageOfBearsWithParts)
+		if ( recycled[numCreated-1] )
 			AddRandomFeaturesToBear(newBear.GetComponent<Bear>());
+
+		GetComponent<AudioSource>().Play();
 	}
 
 	void AddRandomFeaturesToBear(Bear bear)

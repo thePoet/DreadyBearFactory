@@ -21,10 +21,14 @@ public class Bear : MonoBehaviour {
 		return allBears.Count;
 	}
 
-	static void DestroyAll()
+	public static void DestroyAll()
 	{
-		for (int i=allBears.Count; i>0; i--)
+		for (int i=0; i<allBears.Count; i++)
+		{
+			if (allBears[i].belt != null)
+				allBears[i].belt.RemoveBear( allBears[i] );
 			Destroy(allBears[i]);
+		}
 	}
 
 	void Awake () 

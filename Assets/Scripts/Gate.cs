@@ -7,6 +7,7 @@ public class Gate : MonoBehaviour {
 	public Belt feedBelt;
 	public Belt destinationBeltA;
 	public Belt destinationBeltB;
+	public bool beginsWithA;
 	public GameObject spriteAon;
 	public GameObject spriteAoff;
 	public GameObject spriteBon;
@@ -22,6 +23,7 @@ public class Gate : MonoBehaviour {
 	void Start () 
 	{
 		feedBelt.nextBelt = destinationBeltA;
+		Reset();
 		UpdateSprite();
 	}
 	
@@ -60,6 +62,7 @@ public class Gate : MonoBehaviour {
 			feedBelt.nextBelt = destinationBeltB;
 
 		UpdateSprite();
+		GetComponent<AudioSource>().Play();
 	}
 
 	void UpdateSprite()
@@ -85,5 +88,11 @@ public class Gate : MonoBehaviour {
 	{
 		if ( pushable )
 		    Switch();
+	}
+
+	public void Reset()
+	{
+		if (beginsWithA != toA)
+			Switch();
 	}
 }

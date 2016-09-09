@@ -23,6 +23,11 @@ public class GameManager : MonoBehaviour {
 
 	public BearCreator bearCreator;
 
+	public AudioSource tune;
+	public AudioSource gameOver;
+	public AudioSource victory;
+
+	public Gate[] gates;
 
 	bool gameIsOn = false;
 	//int bearsFinished = 0;
@@ -66,6 +71,12 @@ public class GameManager : MonoBehaviour {
 
 	void StartLevel()
 	{
+		gates[0].Reset();
+		gates[1].Reset();
+		gates[2].Reset();
+
+
+		tune.Play();
 		gameIsOn = true;
 
 		foreach( GameObject levelInst in levelInstructions)
@@ -74,7 +85,7 @@ public class GameManager : MonoBehaviour {
 		bearCreator.interval = secondsBetweenBearsCreated;
 		bearCreator.numToBeCreated = numBearsToBeCreated;
 		bearCreator.StartLevel(1);
-		//bearsFinished = 0;
+		//	bearsFinished = 0;
 		bearCountText.text = "0 / " + numBearsToWin;
 		livesCounter.SetActive(true);
 		ScoreCounter.instance.Empty( numBearsToWin );
@@ -94,19 +105,24 @@ public class GameManager : MonoBehaviour {
 		{
 			gameIsOn = false;
 			victoryScreen.SetActive(true);
+			victory.Play();
 		}
 
 		if (gameIsOn && FaultsCounter.instance.GetCount() > 2)
 		{
 			gameIsOn = false;
 			Invoke("GameOver", 1f );
+			tune.Stop();
 		}
 	}
 
 	void GameOver()
 	{
+		Bear.DestroyAll();
+		gameOver.Play();
 		livesCounter.SetActive(false);
 		gameOverScreen.SetActive(true);
 	}
+
 
 }

@@ -7,6 +7,8 @@ public class BearDestroyer : MonoBehaviour {
 	public bool destroyUnfinished;
 	public GameObject fire;
 	public Animator animator;
+	AudioSource audio;
+
 
 	Bear toBeDestroyed;
 
@@ -14,6 +16,8 @@ public class BearDestroyer : MonoBehaviour {
 	{
 		if (fire!=null)
 			HideFire();
+
+		audio = GetComponent<AudioSource>();
 
 
 	}
@@ -48,6 +52,9 @@ public class BearDestroyer : MonoBehaviour {
 			Invoke("HideFire", 1f);
 			ReallyDestroyBear();
 		}
+
+		if(audio!=null)
+			audio.Play();
 
 	}
 

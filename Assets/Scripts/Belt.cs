@@ -9,7 +9,7 @@ public class Belt : MonoBehaviour
 	//public Transform endMarker;
 	public Belt nextBelt;
 	public float speed;
-	public static float minAllowedDistance = 2f;
+	public static float minAllowedDistance = 4f;
 
 
 	public List<Bear> bears = new List<Bear>();
@@ -70,6 +70,7 @@ public class Belt : MonoBehaviour
 
 	public void RemoveBear(Bear bear)
 	{
+		bear.belt = null;
 		bears.Remove( bear );
 	}
 

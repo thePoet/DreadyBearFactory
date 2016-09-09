@@ -9,6 +9,7 @@ public class Goal : MonoBehaviour
 
 			if (bear != null)
 			{
+     			GetComponent<AudioSource>().Play();
 				bear.belt.RemoveBear(bear);
 				ScoreCounter.instance.AddBear(bear);
 	//			GameManager.instance.OnBearFinished();
